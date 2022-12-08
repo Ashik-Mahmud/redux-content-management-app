@@ -52,13 +52,13 @@ const Dashboard = () => {
                 to="/dashboard/blog-list"
                 onClick={() => setActiveStatus(1)}
                 className={
-                  activeStatus == 1
+                  activeStatus === 1
                     ? "text-sm text-indigo-700 flex flex-col justify-between border-indigo-700 pt-3 rounded-t mr-10 font-normal"
                     : "text-sm text-gray-600 py-3 mr-10 font-normal cursor-pointer hover:text-gray-800"
                 }
               >
                 <span className="mb-3 cursor-pointer">
-                  {activeStatus == 1 ? "Blog List" : "Blog List"}
+                  {activeStatus === 1 ? "Blog List" : "Blog List"}
                 </span>
                 {activeStatus === 1 && (
                   <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
@@ -68,15 +68,15 @@ const Dashboard = () => {
                 to="/dashboard/add-blog"
                 onClick={() => setActiveStatus(2)}
                 className={
-                  activeStatus == 2
+                  activeStatus === 2
                     ? "text-sm text-indigo-700 flex flex-col justify-between border-indigo-700 pt-3 rounded-t mr-10 font-normal"
                     : "text-sm text-gray-600 py-3 mr-10 font-normal cursor-pointer hover:text-gray-800"
                 }
               >
                 <span className="mb-3 cursor-pointer">
-                  {activeStatus == 2 ? "Add Blog" : "Add Blog"}
+                  {activeStatus === 2 ? "Add Blog" : "Add Blog"}
                 </span>
-                {activeStatus == 2 && (
+                {activeStatus === 2 && (
                   <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
                 )}
               </Link>
@@ -84,30 +84,30 @@ const Dashboard = () => {
                 to="/dashboard/profile"
                 onClick={() => setActiveStatus(3)}
                 className={
-                  activeStatus == 3
+                  activeStatus === 3
                     ? "text-sm text-indigo-700 flex flex-col justify-between border-indigo-700 pt-3 rounded-t mr-10 font-normal"
                     : "text-sm text-gray-600 py-3 mr-10 font-normal cursor-pointer hover:text-gray-800"
                 }
               >
                 <span className="mb-3 cursor-pointer">
-                  {activeStatus == 3 ? "Profile" : "Profile"}
+                  {activeStatus === 3 ? "Profile" : "Profile"}
                 </span>
-                {activeStatus == 3 && (
+                {activeStatus === 3 && (
                   <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
                 )}
               </Link>
               <li
                 onClick={() => setActiveStatus(4)}
                 className={
-                  activeStatus == 4
+                  activeStatus === 4
                     ? "text-sm text-indigo-700 flex flex-col justify-between border-indigo-700 pt-3 rounded-t mr-10 font-normal"
                     : "text-sm text-gray-600 py-3 mr-10 font-normal cursor-pointer hover:text-gray-800"
                 }
               >
                 <span className="mb-3 cursor-pointer">
-                  {activeStatus == 4 ? "Active" : "Inactive"}
+                  {activeStatus === 4 ? "Active" : "Inactive"}
                 </span>
-                {activeStatus == 4 && (
+                {activeStatus === 4 && (
                   <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
                 )}
               </li>

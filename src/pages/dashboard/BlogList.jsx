@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 
 const BlogList = () => {
-  const [show, setShow] = useState(null);
   return (
     <div>
       <>
@@ -27,6 +26,7 @@ const BlogList = () => {
                         <img
                           className="w-full h-full"
                           src="https://cdn.tuk.dev/assets/templates/olympus/projects.png"
+                          alt=""
                         />
                       </div>
                       <div className="pl-4">
@@ -70,18 +70,22 @@ const BlogList = () => {
                       <img
                         className="shadow-md w-8 h-8 rounded-full"
                         src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png"
+                        alt=""
                       />
                       <img
                         className="shadow-md w-8 h-8 rounded-full -ml-2"
                         src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png"
+                        alt=""
                       />
                       <img
                         className="shadow-md w-8 h-8 rounded-full -ml-2"
                         src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png"
+                        alt=""
                       />
                       <img
                         className="shadow-md w-8 h-8 rounded-full -ml-2"
                         src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png"
+                        alt=""
                       />
                     </div>
                   </td>
