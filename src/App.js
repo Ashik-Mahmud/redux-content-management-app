@@ -4,7 +4,7 @@ import routes from "./routes/mainRoute";
 
 function App() {
   return (
-    <main className="font-poppins">
+    <main className="font-poppins ">
       <RouterProvider router={routes} />
     </main>
   );

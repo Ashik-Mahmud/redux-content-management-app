@@ -27,7 +27,7 @@ const Navbar = () => {
   const activeMenu = menus.find((menu) => menu?.path === location?.pathname);
 
   return (
-    <nav className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gray-100 p-5 px-5 rounded-lg">
+    <nav className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gray-100 p-5 px-5 rounded-lg border shadow">
       <div className="container mx-auto">
         <div>
           <div className="flex space-x-4 justify-between items-center">
@@ -39,7 +39,7 @@ const Navbar = () => {
                       to={menu?.path}
                       className={`flex items-center justify-center flex-col gap-1 w-16 h-16   rounded-lg text-sm ${
                         activeMenu === menu
-                          ? "border-gray-300 bg-gray-300 border-2"
+                          ? "border-yellow-100 bg-yellow-100 border-2"
                           : ""
                       }`}
                     >
