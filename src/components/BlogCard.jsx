@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const BlogCard = () => {
   return (
-    <div className="card bg-gray-50 p-3 group">
+    <div className="card bg-gray-50 p-3 group shadow-sm rounded-sm">
       <div className="card-body">
         <div className="image h-60 overflow-hidden border relative">
           <img
