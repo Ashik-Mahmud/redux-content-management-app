@@ -6,6 +6,7 @@ import BlogDetails from "../pages/BlogDetails";
 import Blogs from "../pages/Blogs";
 import AddBlog from "../pages/dashboard/AddBlog";
 import BlogList from "../pages/dashboard/BlogList";
+import Profile from "../pages/dashboard/Profile";
 import UpdateBlog from "../pages/dashboard/UpdateBlog";
 import Home from "../pages/Home";
 import ReadingHistory from "../pages/ReadingHistory";
@@ -47,8 +48,16 @@ const routes = createBrowserRouter([
         element: <BlogList />,
       },
       {
+        path: "blog-list",
+        element: <BlogList />,
+      },
+      {
         path: "add-blog",
         element: <AddBlog />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
       {
         path: "update-blog/:id",

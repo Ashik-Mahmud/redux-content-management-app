@@ -48,7 +48,8 @@ const Dashboard = () => {
         <div className="justify-between flex-wrap hidden sm:block bg-white rounded shadow">
           <div className="xl:w-full xl:mx-0 pl-5 pr-5 h-12">
             <ul className="flex">
-              <li
+              <Link
+                to="/dashboard/blog-list"
                 onClick={() => setActiveStatus(1)}
                 className={
                   activeStatus == 1
@@ -57,13 +58,14 @@ const Dashboard = () => {
                 }
               >
                 <span className="mb-3 cursor-pointer">
-                  {activeStatus == 1 ? "Active" : "Inactive"}
+                  {activeStatus == 1 ? "Blog List" : "Blog List"}
                 </span>
-                {activeStatus == 1 && (
+                {activeStatus === 1 && (
                   <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
                 )}
-              </li>
-              <li
+              </Link>
+              <Link
+                to="/dashboard/add-blog"
                 onClick={() => setActiveStatus(2)}
                 className={
                   activeStatus == 2
@@ -72,13 +74,14 @@ const Dashboard = () => {
                 }
               >
                 <span className="mb-3 cursor-pointer">
-                  {activeStatus == 2 ? "Active" : "Inactive"}
+                  {activeStatus == 2 ? "Add Blog" : "Add Blog"}
                 </span>
                 {activeStatus == 2 && (
                   <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
                 )}
-              </li>
-              <li
+              </Link>
+              <Link
+                to="/dashboard/profile"
                 onClick={() => setActiveStatus(3)}
                 className={
                   activeStatus == 3
@@ -87,12 +90,12 @@ const Dashboard = () => {
                 }
               >
                 <span className="mb-3 cursor-pointer">
-                  {activeStatus == 3 ? "Active" : "Inactive"}
+                  {activeStatus == 3 ? "Profile" : "Profile"}
                 </span>
                 {activeStatus == 3 && (
                   <div className="w-full h-1 bg-indigo-700 rounded-t-md" />
                 )}
-              </li>
+              </Link>
               <li
                 onClick={() => setActiveStatus(4)}
                 className={
