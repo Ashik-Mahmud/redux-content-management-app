@@ -4,7 +4,7 @@ import BlogCard from "../components/BlogCard";
 const Blogs = () => {
   return (
     <div>
-      <div className="blog-container">
+      <div className="blog-container container mx-auto">
         <div className="blogs-content grid grid-cols-8 items-start gap-5 font-noto">
           {/* blog sidebar */}
           <div className="blog-sidebar p-5 bg-white col-span-2 sticky top-10">
