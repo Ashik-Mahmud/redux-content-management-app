@@ -41,7 +41,7 @@ const BlogCard = ({ blog }) => {
               {blog?.content?.slice(0, 120) + "..."}
             </p>
             <Link
-              to="/blog-details/4343"
+              to={`/blog-details/${blog?._id}`}
               className="card-link flex items-center gap-2 p-3 bg-gray-100  uppercase text-sm font-bold text-gray-600 hover:bg-yellow-500 hover:text-yellow-100 transition-all duration-700"
             >
               <BiChevronsRight size={18} />
