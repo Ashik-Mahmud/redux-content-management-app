@@ -1,4 +1,5 @@
 import {
+  ADD_BLOG_AS_HISTORY,
   ADD_BLOG_FAIL,
   ADD_BLOG_REQUEST,
   ADD_BLOG_SUCCESS,
@@ -19,6 +20,10 @@ export const addBlogSuccess = (data) => {
 
 export const addBlogFail = (error) => {
   return { type: ADD_BLOG_FAIL, payload: error };
+};
+
+export const addBlogAsHistory = (blog) => {
+  return { type: ADD_BLOG_AS_HISTORY, payload: blog };
 };
 
 // delete blog creator

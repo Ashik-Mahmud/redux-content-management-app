@@ -1,8 +1,16 @@
 import React from "react";
 import { BiChevronsRight, BiCloud, BiEdit } from "react-icons/bi";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addBlogAsHistory } from "../redux/ActionCreator/BlogCreator";
 
 const BlogCard = ({ blog }) => {
+  const dispatch = useDispatch();
+  /* handle add blog as history */
+  const handleAddBlogHistory = () => {
+    dispatch(addBlogAsHistory(blog));
+  };
+
   return (
     <div className="card bg-gray-50 p-3 group shadow-sm rounded-sm">
       <div className="card-body">
@@ -42,6 +50,7 @@ const BlogCard = ({ blog }) => {
             </p>
             <Link
               to={`/blog-details/${blog?._id}`}
+              onClick={handleAddBlogHistory}
               className="card-link flex items-center gap-2 p-3 bg-gray-100  uppercase text-sm font-bold text-gray-600 hover:bg-yellow-500 hover:text-yellow-100 transition-all duration-700"
             >
               <BiChevronsRight size={18} />

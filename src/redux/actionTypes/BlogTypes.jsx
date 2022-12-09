@@ -3,6 +3,9 @@ export const ADD_BLOG_REQUEST = "ADD_BLOG_REQUEST";
 export const ADD_BLOG_SUCCESS = "ADD_BLOG_SUCCESS";
 export const ADD_BLOG_FAIL = "ADD_BLOG_FAIL";
 
+// Add Blog History
+export const ADD_BLOG_AS_HISTORY = "ADD_BLOG_AS_HISTORY";
+
 // delete blog action type
 export const DELETE_BLOG_SUCCESS = `DELETE_BLOG_SUCCESS`;
 

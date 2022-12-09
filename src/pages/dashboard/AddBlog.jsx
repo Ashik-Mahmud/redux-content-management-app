@@ -24,8 +24,6 @@ const AddBlog = () => {
     dispatch(addBlogSuccess(sendingData));
   });
 
-  console.log(blogs);
-
   return (
     <div>
       <div className="add-blog-content">

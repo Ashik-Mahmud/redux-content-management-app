@@ -1,4 +1,5 @@
 import {
+  ADD_BLOG_AS_HISTORY,
   ADD_BLOG_REQUEST,
   ADD_BLOG_SUCCESS,
   DELETE_BLOG_SUCCESS,
@@ -30,6 +31,13 @@ const blogReducer = (state = initialState, action) => {
         blogs: [...state.blogs, action.payload],
       };
     }
+
+    case ADD_BLOG_AS_HISTORY:
+      return {
+        ...state,
+        loading: false,
+        history: [...state.history, action.payload],
+      };
 
     case DELETE_BLOG_SUCCESS:
       return {
