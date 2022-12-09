@@ -9,6 +9,7 @@ import {
 
 const initialState = {
   blogs: [],
+  history: [],
   loading: false,
   error: null,
 };

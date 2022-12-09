@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import BlogCard from "../components/BlogCard";
 
 const Blogs = () => {
+  const { blogs } = useSelector((state) => state?.blogReducer);
+
   return (
     <div>
       <div className="blog-container container mx-auto">
@@ -69,12 +72,14 @@ const Blogs = () => {
           </div>
           {/* blog sidebar end */}
           <div className="blog-main col-span-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mb-36">
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
+            {blogs?.length === 0 && (
+              <div className="p-10">
+                <h1>No blogs found</h1>
+              </div>
+            )}
+            {blogs?.map((blog) => (
+              <BlogCard key={blog?._id} blog={blog} />
+            ))}
           </div>
         </div>
       </div>

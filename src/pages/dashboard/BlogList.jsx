@@ -63,7 +63,9 @@ const BlogList = () => {
                     </td>
 
                     <td className="pl-20">
-                      <p className="font-medium">{blog?.content}</p>
+                      <p className="font-medium">
+                        {blog?.content?.slice(0, 50) + "..."}
+                      </p>
                       <p className="text-xs leading-3 text-gray-600 mt-2">
                         content
                       </p>
