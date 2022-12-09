@@ -1,6 +1,7 @@
 import {
   ADD_BLOG_REQUEST,
   ADD_BLOG_SUCCESS,
+  DELETE_BLOG_SUCCESS,
   GET_ALL_BLOGS_FAIL,
   GET_ALL_BLOGS_REQUEST,
   GET_ALL_BLOGS_SUCCESS,
@@ -28,6 +29,13 @@ const blogReducer = (state = initialState, action) => {
         blogs: [...state.blogs, action.payload],
       };
     }
+
+    case DELETE_BLOG_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        blogs: state?.blogs.filter((item) => item?._id !== action?.payload),
+      };
 
     case GET_ALL_BLOGS_REQUEST:
       return {

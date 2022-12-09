@@ -1,13 +1,21 @@
 import React from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { deleteBlogSuccess } from "../../redux/ActionCreator/BlogCreator";
 
 const BlogList = () => {
   const { blogs } = useSelector((state) => state.blogReducer);
+  const dispatch = useDispatch();
 
   /* delete blog */
-  const deleteBlog = () => {};
+  const deleteBlog = (id) => {
+    const isConfirm = window.confirm(`Are you sure?`);
+
+    if (isConfirm) {
+      dispatch(deleteBlogSuccess(id));
+    }
+  };
 
   return (
     <div>
@@ -76,7 +84,7 @@ const BlogList = () => {
                         </Link>
                         <button
                           className="text-lg text-red-500"
-                          onClick={() => deleteBlog()}
+                          onClick={() => deleteBlog(blog?._id)}
                         >
                           <BiTrash />
                         </button>
