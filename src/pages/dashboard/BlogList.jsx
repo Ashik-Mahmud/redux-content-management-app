@@ -1,7 +1,14 @@
 import React from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const BlogList = () => {
+  const { blogs } = useSelector((state) => state.blogReducer);
+
+  /* delete blog */
+  const deleteBlog = () => {};
+
   return (
     <div>
       <>
@@ -11,95 +18,72 @@ const BlogList = () => {
               <thead>
                 <tr className="h-16 w-full text-sm leading-none text-gray-800">
                   <th className="font-normal text-left pl-4">Project</th>
-                  <th className="font-normal text-left pl-12">Progress</th>
-                  <th className="font-normal text-left pl-12">Tasks</th>
-                  <th className="font-normal text-left pl-20">Budget</th>
+                  <th className="font-normal text-left pl-12">Author</th>
+                  <th className="font-normal text-left pl-20">Content</th>
                   <th className="font-normal text-left pl-20">Deadline</th>
                   <th className="font-normal text-left pl-16">Members</th>
                 </tr>
               </thead>
               <tbody className="w-full">
-                <tr className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
-                  <td className="pl-4 cursor-pointer">
-                    <div className="flex items-center">
-                      <div className="w-10 h-10">
-                        <img
-                          className="w-full h-full"
-                          src="https://cdn.tuk.dev/assets/templates/olympus/projects.png"
-                          alt=""
-                        />
+                {blogs?.map((blog, ind) => (
+                  <tr
+                    className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100"
+                    key={blog?.title + ind}
+                  >
+                    <td className="pl-4 cursor-pointer">
+                      <div className="flex items-center">
+                        <div className="w-10 h-10">
+                          <img
+                            className="w-full h-full"
+                            src={blog?.image}
+                            alt={blog?.title}
+                          />
+                        </div>
+                        <div className="pl-4">
+                          <p className="font-medium">{blog?.title}</p>
+                          <p className="text-xs leading-3 text-gray-600 pt-2">
+                            {blog?.category}
+                          </p>
+                        </div>
                       </div>
-                      <div className="pl-4">
-                        <p className="font-medium">
-                          UX Design &amp; Visual Strategy
-                        </p>
-                        <p className="text-xs leading-3 text-gray-600 pt-2">
-                          Herman Group
-                        </p>
+                    </td>
+                    <td className="pl-12">
+                      <p className="text-sm font-medium leading-none text-gray-800">
+                        {blog?.author}
+                      </p>
+                      <div className="text-gray-400">author</div>
+                    </td>
+
+                    <td className="pl-20">
+                      <p className="font-medium">{blog?.content}</p>
+                      <p className="text-xs leading-3 text-gray-600 mt-2">
+                        content
+                      </p>
+                    </td>
+
+                    <td className="pl-16">
+                      <div className="flex items-center">
+                        {new Date(blog?.date).toISOString()}
                       </div>
-                    </div>
-                  </td>
-                  <td className="pl-12">
-                    <p className="text-sm font-medium leading-none text-gray-800">
-                      72%
-                    </p>
-                    <div className="w-24 h-3 bg-gray-100 rounded-full mt-2">
-                      <div className="w-20 h-3 bg-green-progress rounded-full" />
-                    </div>
-                  </td>
-                  <td className="pl-12">
-                    <p className="font-medium">32/47</p>
-                    <p className="text-xs leading-3 text-gray-600 mt-2">
-                      5 tasks pending
-                    </p>
-                  </td>
-                  <td className="pl-20">
-                    <p className="font-medium">$13,000</p>
-                    <p className="text-xs leading-3 text-gray-600 mt-2">
-                      $4,200 left
-                    </p>
-                  </td>
-                  <td className="pl-20">
-                    <p className="font-medium">22.12.21</p>
-                    <p className="text-xs leading-3 text-gray-600 mt-2">
-                      34 days
-                    </p>
-                  </td>
-                  <td className="pl-16">
-                    <div className="flex items-center">
-                      <img
-                        className="shadow-md w-8 h-8 rounded-full"
-                        src="https://cdn.tuk.dev/assets/templates/olympus/projects(8).png"
-                        alt=""
-                      />
-                      <img
-                        className="shadow-md w-8 h-8 rounded-full -ml-2"
-                        src="https://cdn.tuk.dev/assets/templates/olympus/projects(9).png"
-                        alt=""
-                      />
-                      <img
-                        className="shadow-md w-8 h-8 rounded-full -ml-2"
-                        src="https://cdn.tuk.dev/assets/templates/olympus/projects(10).png"
-                        alt=""
-                      />
-                      <img
-                        className="shadow-md w-8 h-8 rounded-full -ml-2"
-                        src="https://cdn.tuk.dev/assets/templates/olympus/projects(11).png"
-                        alt=""
-                      />
-                    </div>
-                  </td>
-                  <td className="px-7 2xl:px-0 ">
-                    <div className="relative flex items-center gap-3">
-                      <button className="text-lg text-blue-600">
-                        <BiEdit />
-                      </button>
-                      <button className="text-lg text-red-500">
-                        <BiTrash />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+                    </td>
+                    <td className="px-7 2xl:px-0 ">
+                      <div className="relative flex items-center gap-3">
+                        <Link
+                          to={`/dashboard/update-blog/${blog?.title}`}
+                          className="text-lg text-blue-600"
+                        >
+                          <BiEdit />
+                        </Link>
+                        <button
+                          className="text-lg text-red-500"
+                          onClick={() => deleteBlog()}
+                        >
+                          <BiTrash />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
