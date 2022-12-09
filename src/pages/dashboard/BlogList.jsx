@@ -69,7 +69,7 @@ const BlogList = () => {
                     <td className="px-7 2xl:px-0 ">
                       <div className="relative flex items-center gap-3">
                         <Link
-                          to={`/dashboard/update-blog/${blog?.title}`}
+                          to={`/dashboard/update-blog/${blog?._id}`}
                           className="text-lg text-blue-600"
                         >
                           <BiEdit />

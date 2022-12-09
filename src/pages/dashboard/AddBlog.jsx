@@ -16,7 +16,7 @@ const AddBlog = () => {
   /* handle blog save */
   const handleBlogSave = handleSubmit(async (data) => {
     const sendingData = {
-      _id: blogs?.length,
+      _id: blogs?.blogs?.length + 1,
       date: new Date(),
       ...data,
     };
