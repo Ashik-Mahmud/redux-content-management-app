@@ -38,9 +38,7 @@ const Dashboard = () => {
           >
             <option className="text-sm text-gray-600">inactive </option>
             <option className="text-sm text-gray-600">inactive </option>
-            <option selected className="text-sm text-gray-600">
-              Active{" "}
-            </option>
+            <option className="text-sm text-gray-600">Active</option>
             <option className="text-sm text-gray-600">inactive </option>
             <option className="text-sm text-gray-600">inactive </option>
           </select>

@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Home = () => {
   const [show, setShow] = useState(false);
+
+  const state = useSelector((state) => state);
+
+  console.log(state);
+
   return (
     <div className="bg-gray-100 pb-12 mt overflow-y-hidden h-[80vh]">
       {/* Code block starts */}

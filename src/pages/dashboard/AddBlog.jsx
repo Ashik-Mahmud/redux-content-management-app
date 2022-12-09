@@ -30,9 +30,9 @@ const AddBlog = () => {
               className="form-control w-full p-3 border border-gray-300 rounded-md focus:outline-blue-500 cursor-pointer"
               id="title"
             >
-              <option value="1">Category 1</option>
-              <option value="2">Category 2</option>
-              <option value="3">Category 3</option>
+              <option value={1}>Category 1</option>
+              <option value={2}>Category 2</option>
+              <option value={3}>Category 3</option>
             </select>
           </div>
           <div className="form-group flex flex-col items-start w-full gap-2">
