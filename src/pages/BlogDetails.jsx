@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BiCategory, BiCloud, BiEdit } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { getBlogSuccess } from "../redux/ActionCreator/BlogCreator";
 
 const BlogDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const blog = useSelector((state) => state?.blogReducer?.blogs).find(
-    (item) => item?._id === Number(id)
-  );
+  const dispatch = useDispatch();
+  const { blogs } = useSelector((state) => state?.blogReducer);
 
+  console.log(blogs);
+  const blog = {};
+
+  useEffect(() => {
+    dispatch(getBlogSuccess());
+  }, [dispatch]);
   return (
     <div>
       <div className="container mx-auto bg-gray-50 p-12">

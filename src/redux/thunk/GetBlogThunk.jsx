@@ -5,7 +5,8 @@ import { getBlogSuccess } from "../ActionCreator/BlogCreator";
 const GetBlogThunk = (id) => {
   return async (dispatch) => {
     const response = await axios.get(`${SERVER_URL}/blogs`);
-    dispatch(getBlogSuccess(response.data?.data));
+    console.log("inside thunk", response.data?.data);
+    dispatch(getBlogSuccess(response?.data?.data));
   };
 };
 

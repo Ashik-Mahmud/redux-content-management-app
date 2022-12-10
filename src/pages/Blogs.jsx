@@ -19,34 +19,34 @@ const Blogs = () => {
   let blogsData = blogs;
   const blogCategories = blogs;
   const categories = blogCategories
-    .map((blog) => blog.category)
+    ?.map((blog) => blog.category)
     .filter((item, i, ar) => ar.indexOf(item) === i);
 
   const tags = blogCategories
-    .map((blog) => blog.tags)
+    ?.map((blog) => blog.tags)
     .flat()
     .filter((item, i, ar) => ar.indexOf(item) === i);
 
   if (byTitle) {
-    blogsData = blogs.filter((blog) =>
+    blogsData = blogs?.filter((blog) =>
       blog.title.toLowerCase().includes(byTitle.toLowerCase())
     );
   }
 
   if (byShow === "recent") {
-    blogsData = blogsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+    blogsData = blogsData?.sort((a, b) => new Date(b.date) - new Date(a.date));
   }
 
   if (byShow === "oldest") {
-    blogsData = blogsData.sort((a, b) => new Date(a.date) - new Date(b.date));
+    blogsData = blogsData?.sort((a, b) => new Date(a.date) - new Date(b.date));
   }
 
   if (byCategory) {
-    blogsData = blogsData.filter((blog) => blog.category === byCategory);
+    blogsData = blogsData?.filter((blog) => blog.category === byCategory);
   }
 
   if (byTag.length > 0) {
-    blogsData = blogsData.filter((blog) =>
+    blogsData = blogsData?.filter((blog) =>
       blog.tags.some((tag) => byTag.includes(tag))
     );
   }
@@ -101,7 +101,7 @@ const Blogs = () => {
                 onChange={(e) => dispatch(setFilterByCategory(e.target.value))}
               >
                 <option value="">All</option>
-                {categories.map((category, i) => (
+                {categories?.map((category, i) => (
                   <option key={i} value={category}>
                     {category}
                   </option>
@@ -111,7 +111,7 @@ const Blogs = () => {
             <div className="blog-sidebar-content mt-5">
               <h1 className="text-lg  mb-0 text-gray-800">Tags</h1>
               <ul className="my-4 flex flex-wrap gap-2 text-sm">
-                {tags.map((tag, i) => (
+                {tags?.map((tag, i) => (
                   <li
                     onClick={() => dispatch(setFilterByTag(tag))}
                     key={i}
