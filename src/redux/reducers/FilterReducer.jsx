@@ -1,4 +1,9 @@
-import { CLEAR_FILTER, SET_FILTER_BY_TITLE } from "../actionTypes/FilterTypes";
+import {
+  CLEAR_FILTER,
+  SET_FILTER_BY_CATEGORY,
+  SET_FILTER_BY_RECENT,
+  SET_FILTER_BY_TITLE,
+} from "../actionTypes/FilterTypes";
 
 const initialState = {
   byTitle: null,
@@ -6,7 +11,7 @@ const initialState = {
   byTag: null,
   byAuthor: null,
   byDate: null,
-  isRecent: true,
+  byShow: "recent",
   error: null,
 };
 
@@ -17,6 +22,19 @@ const FilterReducer = (state = initialState, action) => {
         ...state,
         byTitle: action.payload,
       };
+
+    case SET_FILTER_BY_RECENT:
+      return {
+        ...state,
+        byShow: action.payload,
+      };
+
+    case SET_FILTER_BY_CATEGORY:
+      return {
+        ...state,
+        byCategory: action.payload,
+      };
+
     case CLEAR_FILTER:
       return {
         ...state,

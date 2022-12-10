@@ -33,11 +33,21 @@ const blogReducer = (state = initialState, action) => {
     }
 
     case ADD_BLOG_AS_HISTORY:
-      return {
-        ...state,
-        loading: false,
-        history: [...state.history, action.payload],
-      };
+      const isHasHistory = state?.history?.find(
+        (item) => item?._id === action?.payload?._id
+      );
+      if (!isHasHistory) {
+        return {
+          ...state,
+          loading: false,
+          history: [...state.history, action.payload],
+        };
+      } else {
+        return {
+          ...state,
+          loading: false,
+        };
+      }
 
     case DELETE_BLOG_SUCCESS:
       return {

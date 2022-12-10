@@ -1,11 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BlogCard from "../components/BlogCard";
-import { setFilterForTitle } from "../redux/ActionCreator/FilterCreator";
+import {
+  setFilterByCategory,
+  setFilterByRecent,
+  setFilterForTitle,
+} from "../redux/ActionCreator/FilterCreator";
 
 const Blogs = () => {
   const { blogs } = useSelector((state) => state?.blogReducer);
-  const { byTitle } = useSelector((state) => state?.filterReducer);
+  const { byTitle, byShow, byCategory } = useSelector(
+    (state) => state?.filterReducer
+  );
+
   const dispatch = useDispatch();
   let blogsData = blogs;
   const blogCategories = blogs;
@@ -13,12 +20,22 @@ const Blogs = () => {
     .map((blog) => blog.category)
     .filter((item, i, ar) => ar.indexOf(item) === i);
 
-  console.log(byTitle);
-
   if (byTitle) {
     blogsData = blogs.filter((blog) =>
       blog.title.toLowerCase().includes(byTitle.toLowerCase())
     );
+  }
+
+  if (byShow === "recent") {
+    blogsData = blogsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
+
+  if (byShow === "oldest") {
+    blogsData = blogsData.sort((a, b) => new Date(a.date) - new Date(b.date));
+  }
+
+  if (byCategory) {
+    blogsData = blogsData.filter((blog) => blog.category === byCategory);
   }
 
   return (
@@ -41,7 +58,7 @@ const Blogs = () => {
                 className="w-full border rounded mt-2 bg-gray-50 outline-none p-4"
                 placeholder="Search"
                 onChange={(e) => dispatch(setFilterForTitle(e.target.value))}
-                value={byTitle}
+                value={byTitle || ""}
               />
             </div>
             <div className="blog-sidebar-content mb-5">
@@ -50,9 +67,10 @@ const Blogs = () => {
                 name=""
                 className="w-full border rounded mt-2 bg-gray-50 outline-none p-4 cursor-pointer"
                 id=""
+                onChange={(e) => dispatch(setFilterByRecent(e.target.value))}
               >
-                <option value="">Recent Upload</option>
-                <option value="">Last upload</option>
+                <option value="recent">Recent Upload</option>
+                <option value="oldest">Last upload</option>
               </select>
             </div>
             <div className="blog-sidebar-content">
@@ -61,6 +79,7 @@ const Blogs = () => {
                 name=""
                 className="w-full border rounded mt-2 bg-gray-50 outline-none p-4 cursor-pointer"
                 id=""
+                onChange={(e) => dispatch(setFilterByCategory(e.target.value))}
               >
                 <option value="">All</option>
                 {categories.map((category, i) => (
