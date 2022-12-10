@@ -20,6 +20,11 @@ const Blogs = () => {
     .map((blog) => blog.category)
     .filter((item, i, ar) => ar.indexOf(item) === i);
 
+  const tags = blogCategories
+    .map((blog) => blog.tags)
+    .flat()
+    .filter((item, i, ar) => ar.indexOf(item) === i);
+
   if (byTitle) {
     blogsData = blogs.filter((blog) =>
       blog.title.toLowerCase().includes(byTitle.toLowerCase())
@@ -92,21 +97,14 @@ const Blogs = () => {
             <div className="blog-sidebar-content mt-5">
               <h1 className="text-lg  mb-0 text-gray-800">Tags</h1>
               <ul className="my-4 flex flex-wrap gap-2 text-sm">
-                <li className="text-yellow-500 bg-yellow-100 rounded-sm uppercase p-2 cursor-pointer ">
-                  Reading
-                </li>
-                <li className="text-gray-500 bg-gray-100 rounded-sm uppercase p-2 cursor-pointer">
-                  Blog
-                </li>
-                <li className="text-gray-500 bg-gray-100 rounded-sm uppercase p-2 cursor-pointer">
-                  Freelancing
-                </li>
-                <li className="text-gray-500 bg-gray-100 rounded-sm uppercase p-2 cursor-pointer">
-                  Job
-                </li>
-                <li className="text-gray-500 bg-gray-100 rounded-sm uppercase p-2 cursor-pointer">
-                  Interview
-                </li>
+                {tags.map((tag, i) => (
+                  <li
+                    key={i}
+                    className="text-gray-500 bg-gray-100 rounded-sm uppercase p-2 cursor-pointer"
+                  >
+                    {tag}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
