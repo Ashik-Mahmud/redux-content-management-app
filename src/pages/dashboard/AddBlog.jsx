@@ -1,10 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addBlogSuccess } from "../../redux/ActionCreator/BlogCreator";
 
 const AddBlog = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     handleSubmit,
     register,
@@ -22,6 +24,7 @@ const AddBlog = () => {
     };
 
     dispatch(addBlogSuccess(sendingData));
+    navigate("/dashboard");
   });
 
   return (

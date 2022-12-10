@@ -1,0 +1,3 @@
+export const SET_FILTER = "SET_FILTER";
+export const CLEAR_FILTER = "CLEAR_FILTER";
+export const SET_FILTER_BY_TITLE = "SET_FILTER_BY_TITLE";
