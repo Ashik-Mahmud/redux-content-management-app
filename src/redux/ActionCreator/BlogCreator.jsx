@@ -3,7 +3,7 @@ import {
   ADD_BLOG_FAIL,
   ADD_BLOG_REQUEST,
   ADD_CONTENT,
-  DELETE_BLOG_SUCCESS,
+  DELETE_CONTENT,
 } from "../actionTypes/BlogTypes";
 
 /* add blog creator */
@@ -29,7 +29,7 @@ export const addBlogAsHistory = (blog) => {
 // delete blog creator
 export const deleteBlogSuccess = (id) => {
   return {
-    type: DELETE_BLOG_SUCCESS,
+    type: DELETE_CONTENT,
     payload: id,
   };
 };
