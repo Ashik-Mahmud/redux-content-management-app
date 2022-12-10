@@ -24,8 +24,6 @@ const BlogList = () => {
     dispatch(getBlogSuccess());
   }, [dispatch]);
 
-  console.log(blogs);
-
   return (
     <div>
       <>
