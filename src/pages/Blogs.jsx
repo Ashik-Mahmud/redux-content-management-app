@@ -4,12 +4,13 @@ import BlogCard from "../components/BlogCard";
 import {
   setFilterByCategory,
   setFilterByRecent,
+  setFilterByTag,
   setFilterForTitle,
 } from "../redux/ActionCreator/FilterCreator";
 
 const Blogs = () => {
   const { blogs } = useSelector((state) => state?.blogReducer);
-  const { byTitle, byShow, byCategory } = useSelector(
+  const { byTitle, byShow, byCategory, byTag } = useSelector(
     (state) => state?.filterReducer
   );
 
@@ -41,6 +42,12 @@ const Blogs = () => {
 
   if (byCategory) {
     blogsData = blogsData.filter((blog) => blog.category === byCategory);
+  }
+
+  if (byTag.length > 0) {
+    blogsData = blogsData.filter((blog) =>
+      blog.tags.some((tag) => byTag.includes(tag))
+    );
   }
 
   return (
@@ -99,8 +106,13 @@ const Blogs = () => {
               <ul className="my-4 flex flex-wrap gap-2 text-sm">
                 {tags.map((tag, i) => (
                   <li
+                    onClick={() => dispatch(setFilterByTag(tag))}
                     key={i}
-                    className="text-gray-500 bg-gray-100 rounded-sm uppercase p-2 cursor-pointer"
+                    className={` rounded-sm uppercase p-2 cursor-pointer hover:bg-yellow-500 hover:text-white transition-all duration-300 ease-in-out ${
+                      byTag?.includes(tag)
+                        ? `bg-yellow-500 text-white`
+                        : "text-gray-500 bg-gray-100"
+                    }`}
                   >
                     {tag}
                   </li>
