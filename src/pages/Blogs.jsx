@@ -5,6 +5,12 @@ import BlogCard from "../components/BlogCard";
 const Blogs = () => {
   const { blogs } = useSelector((state) => state?.blogReducer);
 
+  const { byTitle } = useSelector((state) => state?.filterReducer);
+
+  const categories = blogs
+    .map((blog) => blog.category)
+    .filter((item, i, ar) => ar.indexOf(item) === i);
+
   return (
     <div>
       <div className="blog-container container mx-auto">
@@ -45,8 +51,11 @@ const Blogs = () => {
                 id=""
               >
                 <option value="">All</option>
-                <option value="">All</option>
-                <option value="">All</option>
+                {categories.map((category, i) => (
+                  <option key={i} value={category}>
+                    {category}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="blog-sidebar-content mt-5">
