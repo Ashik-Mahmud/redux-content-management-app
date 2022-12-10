@@ -2,7 +2,7 @@ import {
   ADD_BLOG_AS_HISTORY,
   ADD_BLOG_FAIL,
   ADD_BLOG_REQUEST,
-  ADD_BLOG_SUCCESS,
+  ADD_CONTENT,
   DELETE_BLOG_SUCCESS,
 } from "../actionTypes/BlogTypes";
 
@@ -13,7 +13,7 @@ export const addBlogRequest = () => {
 
 export const addBlogSuccess = (data) => {
   return {
-    type: ADD_BLOG_SUCCESS,
+    type: ADD_CONTENT,
     payload: data,
   };
 };

@@ -1,7 +1,7 @@
 import {
   ADD_BLOG_AS_HISTORY,
   ADD_BLOG_REQUEST,
-  ADD_BLOG_SUCCESS,
+  ADD_CONTENT,
   DELETE_BLOG_SUCCESS,
   GET_ALL_BLOGS_FAIL,
   GET_ALL_BLOGS_REQUEST,
@@ -24,7 +24,7 @@ const blogReducer = (state = initialState, action) => {
       };
     }
 
-    case ADD_BLOG_SUCCESS: {
+    case ADD_CONTENT: {
       return {
         ...state,
         loading: false,

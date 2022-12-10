@@ -1,4 +1,9 @@
-// add blog action type
+// add content action type
+export const ADD_CONTENT = "ADD_CONTENT";
+export const GET_CONTENT = "GET_CONTENT";
+export const UPDATE_CONTENT = "UPDATE_CONTENT";
+export const DELETE_CONTENT = "DELETE_CONTENT";
+
 export const ADD_BLOG_REQUEST = "ADD_BLOG_REQUEST";
 export const ADD_BLOG_SUCCESS = "ADD_BLOG_SUCCESS";
 export const ADD_BLOG_FAIL = "ADD_BLOG_FAIL";
