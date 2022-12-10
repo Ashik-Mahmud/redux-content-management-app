@@ -21,7 +21,7 @@ const BlogCard = ({ blog }) => {
                 ? blog?.image
                 : "https://images.unsplash.com/photo-1670491777181-c1fd8ce8b23d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
             }
-            alt={blog?.name}
+            alt={blog?.title}
             className="h-full w-full object-cover group-hover:scale-150 transition-all duration-500 group-hover:rotate-12"
           />
           <div className="date-overlay absolute left-0 top-0 z-10 w-full h-full grid place-items-center bg-[#7e7e7e67] opacity-0 group-hover:opacity-100 transition-opacity">
@@ -34,7 +34,7 @@ const BlogCard = ({ blog }) => {
         <div className="details  m-3 font-noto">
           <div className="details-inner my-2 p-3 -mt-12 z-30 bg-gray-50 relative">
             <h5 className="card-title uppercase font-bold group-hover:text-yellow-500 transition-all">
-              {blog?.name}
+              {blog?.title}
             </h5>
             <div className="meta flex items-center gap-3 text-sm text-gray-500 my-1">
               <span className="date flex items-center gap-1 capitalize">

@@ -1,15 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BlogCard from "../components/BlogCard";
+import { setFilterForTitle } from "../redux/ActionCreator/FilterCreator";
 
 const Blogs = () => {
   const { blogs } = useSelector((state) => state?.blogReducer);
-
   const { byTitle } = useSelector((state) => state?.filterReducer);
-
-  const categories = blogs
+  const dispatch = useDispatch();
+  let blogsData = blogs;
+  const blogCategories = blogs;
+  const categories = blogCategories
     .map((blog) => blog.category)
     .filter((item, i, ar) => ar.indexOf(item) === i);
+
+  console.log(byTitle);
+
+  if (byTitle) {
+    blogsData = blogs.filter((blog) =>
+      blog.title.toLowerCase().includes(byTitle.toLowerCase())
+    );
+  }
 
   return (
     <div>
@@ -30,6 +40,8 @@ const Blogs = () => {
                 type="text"
                 className="w-full border rounded mt-2 bg-gray-50 outline-none p-4"
                 placeholder="Search"
+                onChange={(e) => dispatch(setFilterForTitle(e.target.value))}
+                value={byTitle}
               />
             </div>
             <div className="blog-sidebar-content mb-5">
@@ -81,12 +93,12 @@ const Blogs = () => {
           </div>
           {/* blog sidebar end */}
           <div className="blog-main col-span-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mb-36">
-            {blogs?.length === 0 && (
+            {blogsData?.length === 0 && (
               <div className="p-10">
                 <h1>No blogs found</h1>
               </div>
             )}
-            {blogs?.map((blog) => (
+            {blogsData?.map((blog) => (
               <BlogCard key={blog?._id} blog={blog} />
             ))}
           </div>

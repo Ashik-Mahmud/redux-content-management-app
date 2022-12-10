@@ -1,8 +1,8 @@
-import { SET_FILTER } from "../actionTypes/FilterTypes";
+import { SET_FILTER_BY_TITLE } from "../actionTypes/FilterTypes";
 
-export const setFilter = (filter) => {
+export const setFilterForTitle = (filter) => {
   return {
-    type: SET_FILTER,
+    type: SET_FILTER_BY_TITLE,
     payload: filter,
   };
 };
