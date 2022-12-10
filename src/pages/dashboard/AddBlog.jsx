@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiX } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addBlogSuccess } from "../../redux/ActionCreator/BlogCreator";
+import addBlogThunk from "../../redux/thunk/AddBlogThunk";
 
 const AddBlog = () => {
   const dispatch = useDispatch();
@@ -15,18 +15,9 @@ const AddBlog = () => {
     formState: { errors },
   } = useForm();
 
-  const blogs = useSelector((state) => state.blogReducer);
-
   /* handle blog save */
   const handleBlogSave = handleSubmit(async (data) => {
-    const sendingData = {
-      _id: blogs?.blogs?.length + 1,
-      date: new Date(),
-      ...data,
-      tags,
-    };
-
-    dispatch(addBlogSuccess(sendingData));
+    dispatch(addBlogThunk({ date: new Date(), ...data, tags }));
     navigate("/dashboard");
   });
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BlogCard from "../components/BlogCard";
 import {
@@ -7,6 +7,7 @@ import {
   setFilterByTag,
   setFilterForTitle,
 } from "../redux/ActionCreator/FilterCreator";
+import GetBlogThunk from "../redux/thunk/GetBlogThunk";
 
 const Blogs = () => {
   const { blogs } = useSelector((state) => state?.blogReducer);
@@ -49,6 +50,12 @@ const Blogs = () => {
       blog.tags.some((tag) => byTag.includes(tag))
     );
   }
+
+  useEffect(() => {
+    dispatch(GetBlogThunk());
+  }, [dispatch]);
+
+  console.log(blogs);
 
   return (
     <div>

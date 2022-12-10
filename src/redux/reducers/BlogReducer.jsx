@@ -6,6 +6,7 @@ import {
   GET_ALL_BLOGS_FAIL,
   GET_ALL_BLOGS_REQUEST,
   GET_ALL_BLOGS_SUCCESS,
+  GET_CONTENT,
 } from "../actionTypes/BlogTypes";
 
 const initialState = {
@@ -31,6 +32,13 @@ const blogReducer = (state = initialState, action) => {
         blogs: [...state.blogs, action.payload],
       };
     }
+
+    case GET_CONTENT:
+      return {
+        ...state,
+        loading: false,
+        blogs: action.payload,
+      };
 
     case ADD_BLOG_AS_HISTORY:
       const isHasHistory = state?.history?.find(

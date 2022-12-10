@@ -4,6 +4,7 @@ import {
   ADD_BLOG_REQUEST,
   ADD_CONTENT,
   DELETE_CONTENT,
+  GET_CONTENT,
 } from "../actionTypes/BlogTypes";
 
 /* add blog creator */
@@ -31,5 +32,13 @@ export const deleteBlogSuccess = (id) => {
   return {
     type: DELETE_CONTENT,
     payload: id,
+  };
+};
+
+// get blog creator
+export const getBlogSuccess = (data) => {
+  return {
+    type: GET_CONTENT,
+    payload: data,
   };
 };
