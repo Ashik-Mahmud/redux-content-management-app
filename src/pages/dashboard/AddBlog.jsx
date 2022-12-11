@@ -18,7 +18,7 @@ const AddBlog = () => {
   /* handle blog save */
   const handleBlogSave = handleSubmit(async (data) => {
     dispatch(addBlogThunk({ date: new Date(), ...data, tags }));
-    navigate("/dashboard");
+    navigate("/dashboard/blog-list");
   });
 
   return (
