@@ -28,7 +28,7 @@ const UpdateBlog = () => {
     dispatch(addBlogSuccess(sendingData));
   });
 
-  const blog = blogs?.blogs?.find((item) => item?._id === Number(id));
+  const blog = blogs?.blogs?.find((item) => item?._id === id);
   useEffect(() => {
     setValue("title", blog?.title);
     setValue("category", blog?.category);

@@ -55,8 +55,6 @@ const Blogs = () => {
     dispatch(GetBlogThunk());
   }, [dispatch]);
 
-  console.log(blogs);
-
   return (
     <div>
       <div className="blog-container container mx-auto">
