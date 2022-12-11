@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  deleteBlogSuccess,
-  getBlogSuccess,
-} from "../../redux/ActionCreator/BlogCreator";
+import { deleteBlogSuccess } from "../../redux/ActionCreator/BlogCreator";
 
 const BlogList = () => {
   const { blogs } = useSelector((state) => state.blogReducer);
@@ -19,10 +16,6 @@ const BlogList = () => {
       dispatch(deleteBlogSuccess(id));
     }
   };
-
-  useEffect(() => {
-    dispatch(getBlogSuccess());
-  }, [dispatch]);
 
   return (
     <div>
