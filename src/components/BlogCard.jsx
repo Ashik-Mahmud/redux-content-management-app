@@ -8,7 +8,7 @@ const BlogCard = ({ blog }) => {
   const dispatch = useDispatch();
   /* handle add blog as history */
   const handleAddBlogHistory = () => {
-    dispatch(addBlogAsHistory(blog));
+    dispatch(addBlogAsHistory({ updatedDate: new Date(), ...blog }));
   };
 
   return (

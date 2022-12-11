@@ -6,6 +6,14 @@ import { Link } from "react-router-dom";
 const ReadingHistory = () => {
   const { history } = useSelector((state) => state?.blogReducer);
 
+  /* get last added 3 items */
+  const getLastAddedItems = (arr, n) => {
+    return arr?.slice(Math.max(arr?.length - n, 0)).sort((a, b) => {
+      return new Date(b?.updatedDate) - new Date(a?.updatedDate);
+    });
+  };
+  const lastAddedItems = getLastAddedItems(history, 3);
+
   return (
     <div>
       <div className="container mx-auto p-12">
@@ -20,12 +28,12 @@ const ReadingHistory = () => {
         </div>
         <div className="flex flex-wrap w-full gap-2">
           {/* Code block starts */}
-          {history?.length === 0 && (
+          {lastAddedItems?.length === 0 && (
             <div>
               <h2>No history found.</h2>
             </div>
           )}
-          {history?.slice(0, 3)?.map((item) => (
+          {lastAddedItems?.map((item) => (
             <div
               className="bg-white  py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between px-5 sm:pr-10 shadow rounded-t w-full"
               key={item?._id}
