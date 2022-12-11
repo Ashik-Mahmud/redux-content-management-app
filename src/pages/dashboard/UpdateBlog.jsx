@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { BiArrowBack } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { addBlogSuccess } from "../../redux/ActionCreator/BlogCreator";
+import UpdateBlogThunk from "../../redux/thunk/UpdateBlogThunk";
 const UpdateBlog = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,12 +20,12 @@ const UpdateBlog = () => {
   /* handle blog save */
   const handleUpdateBlog = handleSubmit(async (data) => {
     const sendingData = {
-      _id: blogs?.blogs?.length + 1,
       date: new Date(),
       ...data,
     };
 
-    dispatch(addBlogSuccess(sendingData));
+    dispatch(UpdateBlogThunk(sendingData, id));
+    navigate("/dashboard");
   });
 
   const blog = blogs?.blogs?.find((item) => item?._id === id);

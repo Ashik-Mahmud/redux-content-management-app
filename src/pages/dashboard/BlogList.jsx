@@ -2,7 +2,7 @@ import React from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteBlogSuccess } from "../../redux/ActionCreator/BlogCreator";
+import DeleteBlogThunk from "../../redux/thunk/DeleteBlogThunk";
 
 const BlogList = () => {
   const { blogs } = useSelector((state) => state.blogReducer);
@@ -13,7 +13,7 @@ const BlogList = () => {
     const isConfirm = window.confirm(`Are you sure?`);
 
     if (isConfirm) {
-      dispatch(deleteBlogSuccess(id));
+      dispatch(DeleteBlogThunk(id));
     }
   };
 
