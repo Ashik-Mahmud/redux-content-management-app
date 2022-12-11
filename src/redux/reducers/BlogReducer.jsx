@@ -24,7 +24,12 @@ const blogReducer = (state = initialState, action) => {
         loading: true,
       };
     }
-
+    case GET_CONTENT:
+      return {
+        ...state,
+        loading: false,
+        blogs: action.payload,
+      };
     case ADD_CONTENT: {
       return {
         ...state,
@@ -32,13 +37,6 @@ const blogReducer = (state = initialState, action) => {
         blogs: [...state.blogs, action.payload],
       };
     }
-
-    case GET_CONTENT:
-      return {
-        ...state,
-        loading: false,
-        blogs: action.payload,
-      };
 
     case ADD_BLOG_AS_HISTORY:
       const isHasHistory = state?.history?.find(

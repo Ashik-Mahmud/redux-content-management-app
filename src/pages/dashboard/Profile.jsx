@@ -1,6 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  const state = useSelector((state) => state?.blogReducer);
+  console.log(state);
+
   return (
     <div>
       <div className="p-10">

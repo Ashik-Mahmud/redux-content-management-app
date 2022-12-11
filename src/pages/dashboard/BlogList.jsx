@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DeleteBlogThunk from "../../redux/thunk/DeleteBlogThunk";
+import GetBlogThunk from "../../redux/thunk/GetBlogThunk";
 
 const BlogList = () => {
   const { blogs } = useSelector((state) => state.blogReducer);
@@ -16,6 +17,10 @@ const BlogList = () => {
       dispatch(DeleteBlogThunk(id));
     }
   };
+
+  useEffect(() => {
+    dispatch(GetBlogThunk());
+  }, [dispatch]);
 
   return (
     <div>
