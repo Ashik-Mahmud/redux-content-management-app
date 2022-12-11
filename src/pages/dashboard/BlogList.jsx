@@ -34,7 +34,7 @@ const BlogList = () => {
                   <th className="font-normal text-left pl-12">Author</th>
                   <th className="font-normal text-left pl-20">Content</th>
                   <th className="font-normal text-left pl-20">Deadline</th>
-                  <th className="font-normal text-left pl-16">Members</th>
+                  <th className="font-normal text-left pl-16">action</th>
                 </tr>
               </thead>
               <tbody className="w-full">
