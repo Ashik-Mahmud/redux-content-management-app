@@ -117,7 +117,8 @@ const AddBlog = () => {
             <label htmlFor="tags">
               Tags
               <small>
-                (write single tag and press the <b>shift/Escape/Tab</b> to add)
+                (write single tag and press the{" "}
+                <b>shift/Escape/Tab/Space Bar</b> to add)
               </small>
             </label>
             {tags?.length > 0 && (
@@ -149,7 +150,8 @@ const AddBlog = () => {
                 if (
                   e.key === "Shift" ||
                   e.key === "Tab" ||
-                  e.key === "Escape"
+                  e.key === "Escape" ||
+                  e.key === " "
                 ) {
                   if (tags?.includes(e.target.value)) return;
                   setTags([...tags, e.target.value]);
